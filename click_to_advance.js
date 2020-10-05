@@ -16,32 +16,37 @@ function ClickToAdvance(flower_images, target_div, x, y) {
   this.img.style.top = y + "px";
   target_div.appendChild(this.img);
 
-  /**
+  /*
    * TODO 1: Implement a method named handleEvent.
    * "handleEvent" should advance to the next frame in the sequence.
-   *
-   * this.handleEvent = function() {
-   *    // Your Code Here...
-   * };
-   *
-   * In other words, add 1 to this.frame, and set
+   */
+
+  this.handleEvent = function () {
+    if (this.frame < 2) {
+      this.frame++;
+      this.img.src = this.images[this.frame];
+    }
+  };
+
+  /* In other words, add 1 to this.frame, and set
    * this.img.src = this.images[this.frame]
    *
-   * Dont increase this.frame beyond the number of frame_images available.
+   * Don't increase this.frame beyond the number of frame_images available.
    *
    */
 
-  /**
+  /*
    * TODO 2: add an event listener for "click" to this.img
    *
    * (This should be outside of the handleEvent function, but inside the ClickToAdvance Object...)
    *
    * Instead of passing the function handleEvent in as a callback,
    * pass `this`.
+   */
+  this.img.addEventListener("click", this);
+  /* this.img.addEventListener("click", this);
    *
-   * this.img.addEventListener("click", this);
-   *
-   * `this` referes to the object from ClickToAdvance itself.
+   * `this` refers to the object from ClickToAdvance itself.
    * That object has a handleEvent method on it, so addEvent listener will call that method automatically.
    *
    * Now open up the page and try it!  Your flowers should grow :)
